@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Wi-Fi роутер">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e4e4f6"/>
+      <stop offset="1" stop-color="#c6c6e6"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bg)"/>
+  <circle cx="320" cy="64" r="72" fill="#ffffff" opacity="0.3"/>
+  <circle cx="70" cy="248" r="66" fill="#ffffff" opacity="0.22"/>
+  <g fill="none" stroke="#242433" stroke-width="8" stroke-linecap="round">
+    <rect x="96" y="152" width="208" height="70" rx="18"/>
+    <path d="M136 152V96M264 152V96"/>
+    <path d="M172 186h56"/>
+    <circle cx="116" cy="187" r="4" fill="#242433" stroke="none"/>
+  </g>
+</svg>

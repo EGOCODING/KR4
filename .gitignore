@@ -1,0 +1,18 @@
+# Служебные файлы ОС и редакторов
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Зависимости и сборка (в проекте не используются, но пусть будут)
+node_modules/
+dist/
+
+# Локальные секреты и логи
+.env
+.env.local
+*.log
+
+# Служебные файлы Freebuff
+.freebuff/

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ТехноМаркет — учебный интернет-магазин техники. Каталог на JavaScript: поиск, фильтры, сортировка и корзина.">
+  <title>ТехноМаркет — техника для работы и дома</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>
+    /* Быстрое применение сохранённой темы, чтобы не было вспышки светлой темы. */
+    try {
+      const savedTheme = localStorage.getItem('kr4-shop:theme');
+      if (savedTheme) document.documentElement.dataset.theme = JSON.parse(savedTheme);
+    } catch (error) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  </script>
+</head>
+<body>
+  <a class="visually-hidden" href="#main">Перейти к содержимому</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="ТехноМаркет — на главную">
+        <span class="logo__mark" aria-hidden="true">Т</span>
+        <span class="logo__text">ТехноМаркет</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть меню">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="order.html">Оформление</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-button" id="theme-toggle" type="button" aria-pressed="false" aria-label="Включить тёмную тему">
+          <span class="icon-button__icon" aria-hidden="true">☾</span>
+        </button>
+        <a class="icon-button" href="catalog.html?favorites=1" aria-label="Избранное">
+          <span aria-hidden="true">♥</span>
+          <span class="badge js-favorites-count">0</span>
+        </a>
+        <a class="icon-button" href="cart.html">
+          <span class="icon-button__label">Корзина</span>
+          <span class="badge js-cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <div class="hero__inner">
+          <div class="hero__content">
+            <p class="eyebrow">КР №4 · JavaScript</p>
+            <h1 class="hero__title">Техника, которой удобно пользоваться каждый день</h1>
+            <p class="hero__text">
+              Аудио, периферия и умный дом. Каталог собирается на JavaScript: поиск, фильтр
+              и сортировка обновляют список сразу, без перезагрузки страницы.
+            </p>
+            <div class="hero__actions">
+              <a class="button button--primary" href="catalog.html">Смотреть каталог</a>
+              <a class="button button--ghost" href="order.html">Оставить заявку</a>
+            </div>
+            <dl class="hero__stats">
+              <div>
+                <dt>11 товаров</dt>
+                <dd>в каталоге</dd>
+              </div>
+              <div>
+                <dt>2 года</dt>
+                <dd>гарантии</dd>
+              </div>
+              <div>
+                <dt>1 день</dt>
+                <dd>доставка по городу</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="hero__visual">
+            <img class="hero__image" src="images/hero.svg" alt="Иллюстрация: наушники, клавиатура и умная лампа" width="600" height="520">
+            <p class="hero__chip">Промокод <strong>SALE10</strong> — скидка 10% в корзине</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container features">
+        <article class="feature">
+          <span class="feature__index">01</span>
+          <h2 class="feature__title">Доставка за день</h2>
+          <p class="feature__text">Собираем заказ утром — привозим на следующий день, оплата при получении.</p>
+        </article>
+        <article class="feature">
+          <span class="feature__index">02</span>
+          <h2 class="feature__title">Два года гарантии</h2>
+          <p class="feature__text">Меняем по гарантии без споров и лишних документов, чек хранится в аккаунте.</p>
+        </article>
+        <article class="feature">
+          <span class="feature__index">03</span>
+          <h2 class="feature__title">Поддержка в мессенджере</h2>
+          <p class="feature__text">Поможем выбрать клавиатуру, настроить роутер или подобрать наушники.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow">Выбор покупателей</p>
+            <h2 class="section__title">Популярное сейчас</h2>
+          </div>
+          <a class="section__link" href="catalog.html">Весь каталог →</a>
+        </div>
+        <div class="product-grid" id="featured-grid"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="promo-banner">
+          <div>
+            <p class="promo-banner__eyebrow">Первый заказ</p>
+            <h2 class="promo-banner__title">Промокод SALE10 — минус 10% в корзине</h2>
+            <p class="promo-banner__text">
+              Добавьте товары в корзину и введите код на странице корзины. Скидка пересчитывается
+              сразу, без перезагрузки.
+            </p>
+          </div>
+          <a class="button button--primary" href="cart.html">Перейти в корзину</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a class="logo" href="index.html">
+            <span class="logo__mark" aria-hidden="true">Т</span>
+            <span class="logo__text">ТехноМаркет</span>
+          </a>
+          <p>Учебный интернет-магазин техники. Контрольная работа №4 по дисциплине «Фронтенд и бэкенд разработка».</p>
+        </div>
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a href="index.html">Главная</a>
+          <a href="catalog.html">Каталог</a>
+          <a href="cart.html">Корзина</a>
+          <a href="order.html">Оформление</a>
+          <a href="contacts.html">Контакты</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="current-year">2026</span> ТехноМаркет. Учебный проект.</span>
+        <span>Товары описаны в js/data.js</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toasts" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/validation.js"></script>
+</body>
+</html>

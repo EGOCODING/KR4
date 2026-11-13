@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Оформление заявки в ТехноМаркет: базовая валидация имени, e-mail и телефона с выводом ошибок на страницу.">
+  <title>Оформление заявки — ТехноМаркет</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>
+    /* Быстрое применение сохранённой темы, чтобы не было вспышки светлой темы. */
+    try {
+      const savedTheme = localStorage.getItem('kr4-shop:theme');
+      if (savedTheme) document.documentElement.dataset.theme = JSON.parse(savedTheme);
+    } catch (error) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  </script>
+</head>
+<body>
+  <a class="visually-hidden" href="#main">Перейти к содержимому</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="ТехноМаркет — на главную">
+        <span class="logo__mark" aria-hidden="true">Т</span>
+        <span class="logo__text">ТехноМаркет</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть меню">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="order.html">Оформление</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-button" id="theme-toggle" type="button" aria-pressed="false" aria-label="Включить тёмную тему">
+          <span class="icon-button__icon" aria-hidden="true">☾</span>
+        </button>
+        <a class="icon-button" href="catalog.html?favorites=1" aria-label="Избранное">
+          <span aria-hidden="true">♥</span>
+          <span class="badge js-favorites-count">0</span>
+        </a>
+        <a class="icon-button" href="cart.html">
+          <span class="icon-button__label">Корзина</span>
+          <span class="badge js-cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="container">
+        <div class="page-header">
+          <p class="eyebrow">Заявка</p>
+          <h1 class="page-title">Оформление заявки</h1>
+          <p class="page-subtitle">
+            Заполните форму — менеджер перезвонит и подтвердит заказ. Обязательные поля
+            отмечены звёздочкой. Все проверки выполняются в браузере, на JavaScript.
+          </p>
+        </div>
+
+        <div class="order-layout">
+          <form class="form" id="order-form" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label class="field__label" for="order-name">
+                  Имя и фамилия <span class="field__required">*</span>
+                </label>
+                <input class="field__control" id="order-name" name="name" type="text" autocomplete="name" placeholder="Анна Иванова" aria-describedby="order-name-error">
+                <p class="field__error" id="order-name-error" data-error-for="name"></p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="order-phone">
+                  Телефон <span class="field__required">*</span>
+                </label>
+                <input class="field__control" id="order-phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 (999) 123-45-67" aria-describedby="order-phone-error">
+                <p class="field__error" id="order-phone-error" data-error-for="phone"></p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="order-email">
+                  E-mail <span class="field__required">*</span>
+                </label>
+                <input class="field__control" id="order-email" name="email" type="email" autocomplete="email" placeholder="anna@mail.ru" aria-describedby="order-email-error">
+                <p class="field__error" id="order-email-error" data-error-for="email"></p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="order-city">Город доставки</label>
+                <input class="field__control" id="order-city" name="city" type="text" autocomplete="address-level2" placeholder="Москва" aria-describedby="order-city-error">
+                <p class="field__error" id="order-city-error" data-error-for="city"></p>
+              </div>
+
+              <div class="field field--wide">
+                <label class="field__label" for="order-comment">Комментарий к заказу</label>
+                <textarea class="field__control" id="order-comment" name="comment" rows="4" placeholder="Что уточнить по доставке или комплекту" aria-describedby="order-comment-error order-comment-hint"></textarea>
+                <p class="field__hint" id="order-comment-hint">Необязательно, до 300 символов.</p>
+                <p class="field__error" id="order-comment-error" data-error-for="comment"></p>
+              </div>
+
+              <div class="field field--checkbox field--wide">
+                <input class="field__control" id="order-agreement" name="agreement" type="checkbox" aria-describedby="order-agreement-error">
+                <label class="field__label" for="order-agreement">
+                  Согласен на обработку персональных данных
+                  <span class="field__required">*</span>
+                </label>
+                <p class="field__error" id="order-agreement-error" data-error-for="agreement"></p>
+              </div>
+            </div>
+
+            <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+
+            <div class="form-actions">
+              <button class="button button--primary" type="submit">Отправить заявку</button>
+              <span class="form-note">
+                Данные никуда не отправляются: это учебная имитация отправки на клиенте.
+              </span>
+            </div>
+          </form>
+
+          <aside class="order-aside">
+            <div class="summary" id="order-summary"></div>
+          </aside>
+        </div>
+
+        <div class="order-success is-hidden" id="order-success" role="status" tabindex="-1">
+          <h2 class="order-success__title">Заявка подготовлена</h2>
+          <p>Номер заявки: <strong id="order-number">—</strong></p>
+          <p>
+            В реальном магазине здесь был бы запрос к серверу. Сейчас форма очищена, корзина
+            обнулена, а заявка никуда не отправлена.
+          </p>
+          <p><a class="button button--ghost button--small" href="catalog.html">Вернуться в каталог</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a class="logo" href="index.html">
+            <span class="logo__mark" aria-hidden="true">Т</span>
+            <span class="logo__text">ТехноМаркет</span>
+          </a>
+          <p>Учебный интернет-магазин техники. Контрольная работа №4 по дисциплине «Фронтенд и бэкенд разработка».</p>
+        </div>
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a href="index.html">Главная</a>
+          <a href="catalog.html">Каталог</a>
+          <a href="cart.html">Корзина</a>
+          <a href="order.html">Оформление</a>
+          <a href="contacts.html">Контакты</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="current-year">2026</span> ТехноМаркет. Учебный проект.</span>
+        <span>Товары описаны в js/data.js</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toasts" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/validation.js"></script>
+</body>
+</html>

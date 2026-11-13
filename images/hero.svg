@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 520" role="img" aria-label="Коллаж: наушники, клавиатура и умная лампа">
+  <defs>
+    <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6e6d8"/>
+      <stop offset="1" stop-color="#e7c3ab"/>
+    </linearGradient>
+    <linearGradient id="cardA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#fdf3ea"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="520" rx="28" fill="url(#heroBg)"/>
+  <circle cx="470" cy="92" r="130" fill="#ffffff" opacity="0.35"/>
+  <circle cx="96" cy="446" r="104" fill="#ffffff" opacity="0.28"/>
+
+  <!-- Карточка с наушниками -->
+  <g transform="translate(52 56)">
+    <rect width="300" height="228" rx="24" fill="url(#cardA)"/>
+    <g fill="none" stroke="#2a2320" stroke-width="7" stroke-linecap="round">
+      <path d="M108 140v-18a42 42 0 0 1 84 0v18"/>
+      <rect x="94" y="134" width="24" height="50" rx="12"/>
+      <rect x="182" y="134" width="24" height="50" rx="12"/>
+    </g>
+    <rect x="24" y="26" width="104" height="7" rx="3.5" fill="#e3ddd2"/>
+    <rect x="24" y="44" width="62" height="7" rx="3.5" fill="#eee9e0"/>
+  </g>
+
+  <!-- Карточка с клавиатурой -->
+  <g transform="translate(288 178)">
+    <rect width="272" height="200" rx="24" fill="#1b1b22"/>
+    <g fill="none" stroke="#f4f2ec" stroke-width="6" stroke-linecap="round">
+      <rect x="38" y="58" width="196" height="84" rx="14"/>
+      <path d="M62 82h20M98 82h20M134 82h20M170 82h20M206 82h14"/>
+      <path d="M62 106h20M98 106h20M134 106h20M170 106h50"/>
+      <path d="M96 128h84"/>
+    </g>
+    <path d="M38 36h44" stroke="#ff6d3d" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <!-- Карточка с лампой -->
+  <g transform="translate(96 306)">
+    <rect width="180" height="164" rx="22" fill="url(#cardA)"/>
+    <g fill="none" stroke="#2f2820" stroke-width="6" stroke-linecap="round">
+      <path d="M62 84a28 28 0 0 1 56 0z"/>
+      <path d="M90 84v40"/>
+      <path d="M72 124h36"/>
+    </g>
+  </g>
+
+  <!-- Плашка с промокодом -->
+  <g transform="translate(300 402)">
+    <rect width="200" height="66" rx="33" fill="#df5426"/>
+    <text x="100" y="42" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#ffffff">SALE10</text>
+  </g>
+</svg>
